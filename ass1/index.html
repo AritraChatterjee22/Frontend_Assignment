@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>React Frontend Task</title>
+</head>
+<body>
+  <div id="root"></div>
+
+<script src="react.production.min.js.js"></script>
+<script src="react-dom.production.min.js.js"></script>
+
+  <script>
+    // React component
+    class EditableTable extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          data: [
+            'Onboarding Call',
+            'Google Search Console Access',
+            'Google Analytics Access',
+            'Website Access',
+            'Technical Audit',
+            'Anchor Text and Semantic Analysis',
+            'Competitor Analysis',
+            'Anchor Text / URL Mapping',
+            'Google Data Studio Report + Local Reporting Suite',
+            'Site Level Optimization',
+            'On Page Optimization',
+            'Content Creation',
+            'Content Publishing',
+            'Premium Press Release',
+            'Authority Niche Placements',
+            'Review Management',
+            'Index Links',
+            'Video Recap'
+          ]
+        };
+      }
+
+      handleChange = (event, index) => {
+        const { data } = this.state;
+        const updatedData = [...data];
+        updatedData[index] = event.target.value;
+        this.setState({ data: updatedData });
+      }
+
+      render() {
+        const { data } = this.state;
+
+        return (
+          <table>
+            <thead>
+              <tr>
+                <th>Month 1</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>
+                    <input
+                      type="text"
+                      value={item}
+                      onChange={event => this.handleChange(event, index)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+      }
+    }
+
+    ReactDOM.render(<EditableTable />, document.getElementById('root'));
+  </script>
+</body>
+</html>
+
